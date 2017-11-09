@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+</head>
+<body>
+<script>
+	function encodeImageFileAsURL(element) {
+  var file = element.files[0];
+  var reader = new FileReader();
+  reader.onloadend = function() {
+   // console.log('RESULT', reader.result)
+	$("#generated").val(reader.result);
+	document.getElementById("generated").select();
+	document.execCommand("copy");	
+	//alert("copied");
+  }
+  reader.readAsDataURL(file);
+}
+</script>
+
+<input type="file" onchange="encodeImageFileAsURL(this)" />
+<textArea id="generated"></textArea>
+</body>
+</html>
